@@ -40,7 +40,7 @@ const Movie = () => {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10">
-      {movies && movies.length > 0 ? (
+      {movies && movies.length > 0 && !loading ? (
         movies.map((movie) => {
           return (
             <MovieCard

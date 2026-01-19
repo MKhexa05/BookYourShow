@@ -49,7 +49,7 @@ const Register = (props: RegisterProps) => {
       if (response.data) {
         console.log(response.data.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log("Something went wrong", error.response.data.message);
       setError(error.response.data.message);
     } finally {

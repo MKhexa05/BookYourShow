@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Auth from "./Components/Auth";
 import Dashboard from "./Components/Dashboard";
-import MovieDescription from "./Components/MovieDescription";
 import TheaterDescription from "./Components/TheaterDescription";
 import UserProvider from "./context/userContext";
 import { Toaster } from "react-hot-toast";
@@ -15,7 +14,6 @@ import SelectSeats from "./Components/SelectSeats";
 import Tickets from "./Components/Tickets";
 import OrderSuccess from "./Components/OrderSuccess";
 import MovieDescription2 from "./Components/MovieDescription2";
-import TheaterDescription2 from "./TheaterDescription2";
 
 function App() {
   return (
@@ -26,9 +24,9 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/movie/:id" element={<MovieDescription2 />} />
-          <Route path="/movie2/:id" element={<MovieDescription />} />
+          {/* <Route path="/movie2/:id" element={<MovieDescription />} /> */}
           <Route path="/theater/:id" element={<TheaterDescription />} />
-          <Route path="/theater2/:id" element={<TheaterDescription2 />} />
+          {/* <Route path="/theater2/:id" element={<TheaterDescription2 />} /> */}
           <Route path="/selectSeats/:param" element={<SelectSeats />} />
           <Route path="/tickets" element={<Tickets />} />
           <Route path="/success" element={<OrderSuccess />} />

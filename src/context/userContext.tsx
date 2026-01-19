@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type UserContextType = {
   user: boolean;
@@ -7,6 +7,14 @@ type UserContextType = {
 };
 
 export const UserContext = createContext<UserContextType | null>(null);
+
+export function useUserContext() {
+  const ctx = useContext(UserContext);
+  if (!ctx) {
+    throw new Error("useUserContext must be used inside UserProvider");
+  }
+  return ctx;
+}
 
 type UserProviderProps = {
   children: React.ReactNode;
@@ -25,7 +33,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
 
   return (
     <UserContext.Provider
-    
       value={{
         user,
         updateUser,
@@ -33,10 +40,8 @@ const UserProvider = ({ children }: UserProviderProps) => {
       }}
     >
       <div className="bg-linear-to-bl from-blue-200 via-white to-blue-200">
-
-
-      {children }
-    </div>
+        {children}
+      </div>
     </UserContext.Provider>
   );
 };

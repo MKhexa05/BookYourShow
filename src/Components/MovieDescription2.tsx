@@ -20,32 +20,6 @@ type MovieDescription = {
   theaters: Theater[];
 };
 
-type Screen = {
-  id: string;
-  layout:
-    | string
-    | { layout: { rows: string[]; columns: number[] }; type: string }[];
-  screenNumber: number;
-  theaterId: string;
-  theaterName: string;
-};
-
-type Shows = {
-  id: string;
-  startTime: string;
-  movieId: string;
-  screenId: string;
-  status: string;
-  price: {
-    price: number;
-    layoutType: string;
-  }[];
-  createdAt: string;
-  updatedAt: string;
-  orders: {
-    seatData: { seats: { row: string; column: number; layoutType: string } }[];
-  }[];
-};
 
 type Theater = {
   id: string;

@@ -244,7 +244,7 @@ const TheaterDescription2 = () => {
         </div>
         {/* MOVIE LIST */}
         <div className="mt-10 space-y-10 animate-fade-in">
-          {movieShows != null && movieShows.length > 0
+          {movieShows != null && movieShows.length > 0 && !loading
             ? movieShows.map((movie) => (
                 <TheaterMovieCard
                   key={movie.id}

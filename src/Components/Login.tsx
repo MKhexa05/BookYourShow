@@ -45,7 +45,7 @@ const Login = (props: LoginProps) => {
         // console.log(accessToken);
         navigate("/dashboard");
       }
-    } catch (error) {
+    } catch (error:any) {
       console.log("Something went wrong", error.response.data.message);
       setError(error.response.data.message);
     } finally {

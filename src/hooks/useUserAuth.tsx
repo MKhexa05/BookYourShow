@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "../context/userContext";
+import { useEffect } from "react";
+import { useUserContext } from "../context/userContext";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
 
 const useUserAuth = () => {
-  const { user, updateUser, clearUser } = useContext(UserContext);
+  const { user, updateUser, clearUser } = useUserContext();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,8 +16,7 @@ const useUserAuth = () => {
       const token = localStorage.getItem("token");
       if (isMounted && token) {
         updateUser(true);
-        if(matchPath("/auth", location.pathname)){
-
+        if (matchPath("/auth", location.pathname)) {
           navigate("/");
         }
       } else if (isMounted) {

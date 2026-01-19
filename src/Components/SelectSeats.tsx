@@ -283,8 +283,8 @@ const SelectSeats = () => {
               <div>
                 <p className="text-gray-600 mb-1 text-sm">Date</p>
                 <p className="font-medium text-gray-400 text-lg">
-                  {formatShowDate(showtime?.startTime).day},{" "}
-                  {formatShowDate(showtime?.startTime, "numeric").date}
+                  {showtime && formatShowDate(showtime?.startTime).day},{" "}
+                  {showtime && formatShowDate(showtime?.startTime, "numeric").date}
                 </p>
               </div>
 
@@ -295,7 +295,7 @@ const SelectSeats = () => {
                   </p>
                   <p className="font-medium text-gray-400 text-lg">
                     {selectedSeats
-                      .sort((a, b) => a.id - b.id)
+                      .sort((a:any, b:any) => a.id - b.id)
                       .map((s) => s.id)
                       .join(", ")}
                   </p>
@@ -304,7 +304,7 @@ const SelectSeats = () => {
                 <div>
                   <p className="text-gray-600 mb-1 text-sm">Hours</p>
                   <p className="font-medium text-gray-400 text-lg">
-                    {new Date(showtime?.startTime).toLocaleTimeString("en-US", {
+                    {showtime&& new Date(showtime?.startTime).toLocaleTimeString("en-US", {
                       hour: "numeric",
                       minute: "2-digit",
                       hour12: false,
