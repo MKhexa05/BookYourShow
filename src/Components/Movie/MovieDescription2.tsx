@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { axiosInstance } from "../utils/axiosInstance";
-import { API_PATH } from "../utils/apiPaths";
-import Navbar from "./Navbar";
-import formatShowDate from "../utils/fomatShowDates";
-import SeatNumberModal from "./SeatNumberModal";
-import useUserAuth from "../hooks/useUserAuth";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { API_PATH } from "../../utils/apiPaths";
+import Navbar from "../Navbar";
+import formatShowDate from "../../utils/fomatShowDates";
+import SeatNumberModal from "../SeatNumberModal";
+import useUserAuth from "../../hooks/useUserAuth";
 
 type MovieDescription = {
   id: string;
@@ -19,7 +19,6 @@ type MovieDescription = {
   updatedAt: string;
   theaters: Theater[];
 };
-
 
 type Theater = {
   id: string;

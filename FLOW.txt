@@ -37,56 +37,13 @@ then filter the showtimes for the selected date
 
 
 
-
-{
-    "id": "14ed1405-6a03-4fa4-b1ea-dee4cd725b93",
-    "screenNumber": 5,
-    "layout": [
-      {
-        "type": "Platinum",
-        "layout": {
-          "rows": [
-            "A",
-            "B"
-          ],
-          "columns": [
-            1,
-            10
-          ]
-        }
-      },
-      {
-        "type": "Slider Sofa",
-        "layout": {
-          "rows": [
-            "C",
-            "E"
-          ],
-          "columns": [
-            1,
-            10
-          ]
-        }
-      },
-      {
-        "type": "Lounger",
-        "layout": {
-          "rows": [
-            "F",
-            "G"
-          ],
-          "columns": [
-            1,
-            10
-          ]
-        }
-      }
-    ],
-    "theaterId": "37a43d17-7a0d-4cab-84d8-7e868d487c45",
-    "theaterName": "Starplex Theatre"
-  }
-                                    
-
+Make the code modular
+make reusable components
+More UI -> break into component
+more logic -> break into custom hooks
+handle auth flow
+token handling
+token expire handling
 
 
 

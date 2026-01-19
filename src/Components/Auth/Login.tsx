@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { axiosInstance } from "../utils/axiosInstance";
-import { API_PATH } from "../utils/apiPaths";
-import { validateEmail } from "../utils/validateEmail";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import useUserAuth from "../hooks/useUserAuth";
+import useUserAuth from "../../hooks/useUserAuth";
+import { validateEmail } from "../../utils/validateEmail";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { API_PATH } from "../../utils/apiPaths";
 
 type LoginProps = {
   setIsRegister: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Login = (props: LoginProps) => {
-  useUserAuth()
+  useUserAuth();
   const { setIsRegister } = props;
 
   const [email, setEmail] = useState("");
@@ -41,11 +41,11 @@ const Login = (props: LoginProps) => {
       const { accessToken } = response.data.data;
       if (accessToken) {
         localStorage.setItem("token", accessToken);
-        toast.success("Login Successful")
+        toast.success("Login Successful");
         // console.log(accessToken);
         navigate("/dashboard");
       }
-    } catch (error:any) {
+    } catch (error: any) {
       console.log("Something went wrong", error.response.data.message);
       setError(error.response.data.message);
     } finally {

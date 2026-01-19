@@ -38,18 +38,18 @@ const Tickets = () => {
   const [selected, setSelected] = useState<"upcoming" | "history">("upcoming");
   const [allOrders, setAllOrders] = useState<Order[] | null>();
 
-  async function fetchOrders() {
-    try {
-      const response = await axiosInstance.get(API_PATH.ORDER.GET_ORDERS);
-      if (response.data) {
-        console.log(response.data);
-        setAllOrders(response.data);
-      }
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
-  }
   useEffect(() => {
+    async function fetchOrders() {
+      try {
+        const response = await axiosInstance.get(API_PATH.ORDER.GET_ORDERS);
+        if (response.data) {
+          console.log(response.data);
+          setAllOrders(response.data);
+        }
+      } catch (error) {
+        console.log("Something went wrong", error);
+      }
+    }
     fetchOrders();
   }, []);
 

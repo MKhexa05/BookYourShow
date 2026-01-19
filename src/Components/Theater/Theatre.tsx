@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { axiosInstance } from "../utils/axiosInstance";
-import { API_PATH } from "../utils/apiPaths";
-import TheatreCard from "./TheaterCard";
+import TheaterCard from "./TheaterCard";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { API_PATH } from "../../utils/apiPaths";
 
 type Theatre = {
   id: string;
@@ -40,7 +40,7 @@ const Theatre = () => {
       {theatres && !loading ? (
         theatres.map((theatre) => {
           return (
-            <TheatreCard
+            <TheaterCard
               key={theatre.id}
               id={theatre.id}
               name={theatre.name}

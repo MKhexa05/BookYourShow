@@ -1,5 +1,4 @@
 import { matchPath, NavLink, useLocation, useNavigate } from "react-router-dom";
-import logo from "../assets/cinema-logo.png";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -7,14 +6,14 @@ export default function Navbar() {
   function handleLogout() {
     localStorage.removeItem("token");
     navigate("/");
-    }
+  }
 
-    const location = useLocation();
+  const location = useLocation();
 
-const isHomeActive =
-  matchPath("/dashboard", location.pathname) ||
-  matchPath("/movie/:id", location.pathname) ||
-  matchPath("/theater/:id", location.pathname);
+  const isHomeActive =
+    matchPath("/dashboard", location.pathname) ||
+    matchPath("/movie/:id", location.pathname) ||
+    matchPath("/theater/:id", location.pathname);
 
   return (
     <nav className="w-full">
@@ -22,7 +21,7 @@ const isHomeActive =
         {/* LEFT: Logo */}
         <div className="flex items-center">
           <img
-            src={logo} // <-- update path
+            src={"/cinema-logo.png"} // <-- update path
             alt="Cinemas Logo"
             className="h-10 w-auto"
           />
@@ -48,7 +47,7 @@ const isHomeActive =
             className={({ isActive }) =>
               `relative pb-1 text-sm font-medium transition ${
                 isActive
-                  ? "text-[#1090DF] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-[#1090DF]"
+                  ? "text-[#1090DF] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-[#1090DF]"
                   : "text-[#1090DF] hover:border-b-[#1090DF]"
               }`
             }

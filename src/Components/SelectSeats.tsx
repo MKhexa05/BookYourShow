@@ -194,7 +194,7 @@ const SelectSeats = () => {
         grid: generateSeatGrid(layout),
         price:
           data.price.filter((p: Price) => p.layoutType === layout.type)[0]
-            ?.price | 100,
+            ?.price ?? 100,
       }));
 
       setSeatGrids(grids);
@@ -284,7 +284,8 @@ const SelectSeats = () => {
                 <p className="text-gray-600 mb-1 text-sm">Date</p>
                 <p className="font-medium text-gray-400 text-lg">
                   {showtime && formatShowDate(showtime?.startTime).day},{" "}
-                  {showtime && formatShowDate(showtime?.startTime, "numeric").date}
+                  {showtime &&
+                    formatShowDate(showtime?.startTime, "numeric").date}
                 </p>
               </div>
 
@@ -295,7 +296,7 @@ const SelectSeats = () => {
                   </p>
                   <p className="font-medium text-gray-400 text-lg">
                     {selectedSeats
-                      .sort((a:any, b:any) => a.id - b.id)
+                      .sort((a: any, b: any) => a.id - b.id)
                       .map((s) => s.id)
                       .join(", ")}
                   </p>
@@ -304,11 +305,15 @@ const SelectSeats = () => {
                 <div>
                   <p className="text-gray-600 mb-1 text-sm">Hours</p>
                   <p className="font-medium text-gray-400 text-lg">
-                    {showtime&& new Date(showtime?.startTime).toLocaleTimeString("en-US", {
-                      hour: "numeric",
-                      minute: "2-digit",
-                      hour12: false,
-                    })}
+                    {showtime &&
+                      new Date(showtime?.startTime).toLocaleTimeString(
+                        "en-US",
+                        {
+                          hour: "numeric",
+                          minute: "2-digit",
+                          hour12: false,
+                        }
+                      )}
                   </p>
                 </div>
               </div>

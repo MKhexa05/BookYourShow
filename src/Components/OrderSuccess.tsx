@@ -41,25 +41,23 @@ const OrderSuccess = () => {
   const [viewTicket, setViewTicket] = useState(false);
   const navigate = useNavigate();
 
-  //   console.log(sessionId);
-
-  async function fetchOrder() {
-    if (!sessionId) return;
-    try {
-      const response = await axiosInstance.get(API_PATH.ORDER.GET_ORDERS);
-      if (response.data) {
-        const thisOrder = response.data
-          .filter((order: Order) => order.transactionId === sessionId)
-          .flat()[0];
-        setOrder(thisOrder);
-      }
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
-  }
   useEffect(() => {
+    async function fetchOrder() {
+      if (!sessionId) return;
+      try {
+        const response = await axiosInstance.get(API_PATH.ORDER.GET_ORDERS);
+        if (response.data) {
+          const thisOrder = response.data
+            .filter((order: Order) => order.transactionId === sessionId)
+            .flat()[0];
+          setOrder(thisOrder);
+        }
+      } catch (error) {
+        console.log("Something went wrong", error);
+      }
+    }
     fetchOrder();
-  }, []);
+  }, [sessionId]);
 
   function handleHomepage() {
     navigate("/");

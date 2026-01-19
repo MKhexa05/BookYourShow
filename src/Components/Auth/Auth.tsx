@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "../assets/cinema-logo.png";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -13,7 +12,7 @@ const Auth = () => {
         {/* Logo */}
         <div className="flex items-start">
           <img
-            src={logo} // <-- update path
+            src={"/cinema-logo.png"} // <-- update path
             alt="Cinemas Logo"
             className="h-10 w-auto"
           />

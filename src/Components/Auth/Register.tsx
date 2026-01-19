@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { validateEmail } from "../utils/validateEmail";
-import { axiosInstance } from "../utils/axiosInstance";
-import { API_PATH } from "../utils/apiPaths";
-import useUserAuth from "../hooks/useUserAuth";
-import { validatePassword } from "../utils/validatePassword";
+// import { validateEmail } from "../utils/validateEmail";
+// import { axiosInstance } from "../utils/axiosInstance";
+// import { API_PATH } from "../utils/apiPaths";
+// import useUserAuth from "../hooks/useUserAuth";
+// import { validatePassword } from "../utils/validatePassword";
+
+import useUserAuth from "../../hooks/useUserAuth";
+import { validateEmail } from "../../utils/validateEmail";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { API_PATH } from "../../utils/apiPaths";
+import { validatePassword } from "../../utils/validatePassword";
 type RegisterProps = {
   setIsRegister: React.Dispatch<React.SetStateAction<boolean>>;
 };

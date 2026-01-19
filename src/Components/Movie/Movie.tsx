@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { axiosInstance } from "../utils/axiosInstance";
-import { API_PATH } from "../utils/apiPaths";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { API_PATH } from "../../utils/apiPaths";
 import MovieCard from "./MovieCard";
 
 type Movie = {

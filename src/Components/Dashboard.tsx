@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
-import Movie from "./Movie";
-import Theatre from "./Theatre";
+import Movie from "./Movie/Movie";
 import useUserAuth from "../hooks/useUserAuth";
+import Theatre from "./Theater/Theatre";
 
 const Dashboard = () => {
   useUserAuth();
@@ -44,8 +44,6 @@ const Dashboard = () => {
               Theatres
             </button>
           </div>
-
-          
         </div>
         <div className="mt-10 flex justify-center">
           <div className="w-full animate-fade-in" key={selected}>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import { axiosInstance } from "../utils/axiosInstance";
-import { API_PATH } from "../utils/apiPaths";
+import Navbar from "../Navbar";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { API_PATH } from "../../utils/apiPaths";
 import { useNavigate, useParams } from "react-router-dom";
-import useUserAuth from "../hooks/useUserAuth";
-import formatShowDate from "../utils/fomatShowDates";
-import SeatNumberModal from "./SeatNumberModal";
+import useUserAuth from "../../hooks/useUserAuth";
+import formatShowDate from "../../utils/fomatShowDates";
+import SeatNumberModal from "../SeatNumberModal";
 import TheaterMovieCard from "./TheaterMovieCard";
 
 type MovieShows = {
@@ -93,21 +93,6 @@ const TheaterDescription2 = () => {
 
   const navigate = useNavigate();
 
-  async function fetchTheaterDescription() {
-    try {
-      if (id) {
-        const theater = await axiosInstance.get(
-          API_PATH.THEATRE.GET_THEATERS_ID(id)
-        );
-        if (theater.data) {
-          setTheaterDescription(theater.data.data);
-        }
-      }
-    } catch (error) {
-      console.log("Something went wrong ", error);
-    }
-  }
-
   async function fetchMovieShows() {
     try {
       if (id) {
@@ -145,8 +130,22 @@ const TheaterDescription2 = () => {
   }
 
   useEffect(() => {
+    async function fetchTheaterDescription() {
+      try {
+        if (id) {
+          const theater = await axiosInstance.get(
+            API_PATH.THEATRE.GET_THEATERS_ID(id)
+          );
+          if (theater.data) {
+            setTheaterDescription(theater.data.data);
+          }
+        }
+      } catch (error) {
+        console.log("Something went wrong ", error);
+      }
+    }
     fetchTheaterDescription();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function init() {
@@ -163,7 +162,7 @@ const TheaterDescription2 = () => {
     if (!selectedDate && uniqueDates.length > 0) {
       setSelectedDate(uniqueDates[0]);
     }
-  }, [uniqueDates]);
+  }, [uniqueDates, selectedDate]);
 
   useEffect(() => {
     setSelectedShowtimeId(null);
@@ -211,8 +210,8 @@ const TheaterDescription2 = () => {
         {/* DATES */}
 
         <div className="relative mt-8">
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-black/10 to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-black/10 to-transparent z-10" />
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-8 bg-linear-to-r from-black/10 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-linear-to-l from-black/10 to-transparent z-10" />
 
           <div className="overflow-x-auto flex items-center gap-4 snap-x snap-mandatory">
             <button className="text-[#1090DF] text-xl">‹</button>
