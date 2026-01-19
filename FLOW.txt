@@ -1,0 +1,103 @@
+FOR MOVIE DESCRIPTION
+
+movie/{id}
+
+list of theater ids
+
+theater/{id=1}/screen
+
+list of screen ids of theater 1
+
+screen/{id} [for all the screens of theater 1]
+
+list of movies on all screens of theater 1
+with date 
+with start time
+
+
+
+
+
+
+
+FOR THEATER DESCRIPTION
+
+theater/{id}/movies                     theater/{id}/screens
+
+list of all movies at theater 1         list of all screen ids at theater 1
+[print the list of movies with the
+time]                                   screen/{id} [for all screens of theater 1]
+
+                                        list of all movies at all the screens of theater 1 woth date with time
+
+then select date
+
+then filter the showtimes for the selected date
+
+
+
+
+
+{
+    "id": "14ed1405-6a03-4fa4-b1ea-dee4cd725b93",
+    "screenNumber": 5,
+    "layout": [
+      {
+        "type": "Platinum",
+        "layout": {
+          "rows": [
+            "A",
+            "B"
+          ],
+          "columns": [
+            1,
+            10
+          ]
+        }
+      },
+      {
+        "type": "Slider Sofa",
+        "layout": {
+          "rows": [
+            "C",
+            "E"
+          ],
+          "columns": [
+            1,
+            10
+          ]
+        }
+      },
+      {
+        "type": "Lounger",
+        "layout": {
+          "rows": [
+            "F",
+            "G"
+          ],
+          "columns": [
+            1,
+            10
+          ]
+        }
+      }
+    ],
+    "theaterId": "37a43d17-7a0d-4cab-84d8-7e868d487c45",
+    "theaterName": "Starplex Theatre"
+  }
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
