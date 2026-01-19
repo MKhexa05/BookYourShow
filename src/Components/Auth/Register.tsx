@@ -10,6 +10,7 @@ import { validateEmail } from "../../utils/validateEmail";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { API_PATH } from "../../utils/apiPaths";
 import { validatePassword } from "../../utils/validatePassword";
+import toast from "react-hot-toast";
 type RegisterProps = {
   setIsRegister: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -53,7 +54,8 @@ const Register = (props: RegisterProps) => {
         password,
       });
       if (response.data) {
-        console.log(response.data.message);
+        toast.success("Registered Successful");
+        setIsRegister(false);
       }
     } catch (error: any) {
       console.log("Something went wrong", error.response.data.message);
