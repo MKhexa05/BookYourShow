@@ -37,7 +37,10 @@ const TicketCardSkeleton = () => {
   return (
     <div className="w-full flex-wrap flex  gap-6">
       {Array.from({ length: 6 }).map((_, i) => (
-        <div className="w-full h-80 max-w-sm rounded-xl border border-gray-200 p-5 animate-pulse ">
+        <div
+          key={i}
+          className="w-full h-80 max-w-sm rounded-xl border border-gray-200 p-5 animate-pulse "
+        >
           {/* Movie title */}
           <div className="h-5 w-3/4 bg-gray-300 rounded mb-7 mt-2" />
 

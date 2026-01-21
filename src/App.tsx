@@ -2,7 +2,6 @@ import {
   Route,
   BrowserRouter as Router,
   Routes,
-  Navigate,
   useNavigate,
 } from "react-router-dom";
 import Auth from "./Components/Auth/Auth";
