@@ -346,13 +346,13 @@ const SelectSeats = () => {
               ))}
 
               <div className="flex justify-between text-gray-600">
-                <p>Service Charge (6%)</p>
-                <p>₹{Math.round(total * 0.06)}</p>
+                <p>Service Charge (0%)</p>
+                <p>₹{0}</p>
               </div>
 
               <div className="border-t pt-3 flex justify-between font-semibold text-gray-600">
                 <p>Total payment</p>
-                <p>₹{Math.round(total + total * 0.06)}</p>
+                <p>₹{total}</p>
               </div>
             </div>
 
@@ -378,7 +378,7 @@ const SelectSeats = () => {
                     Processing payment…
                   </span>
                 ) : (
-                  `Total Pay ₹${Math.round(total + total * 0.06)} Proceed`
+                  `Total Pay ₹${total} Proceed`
                 )}
               </button>
 

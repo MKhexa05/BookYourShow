@@ -1,11 +1,13 @@
 import { matchPath, NavLink, useLocation, useNavigate } from "react-router-dom";
+import useUserAuth from "../hooks/useUserAuth";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const {logout} = useUserAuth()
 
   function handleLogout() {
-    localStorage.removeItem("token");
-    navigate("/");
+    logout()
+    navigate("/auth");
   }
 
   const location = useLocation();

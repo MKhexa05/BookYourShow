@@ -14,20 +14,78 @@ import SelectSeats from "./Components/SelectSeats";
 import Tickets from "./Components/Tickets";
 import OrderSuccess from "./Components/OrderSuccess";
 import MovieDescription2 from "./Components/Movie/MovieDescription2";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import PublicRoute from "./Components/PublicRoute";
 
 function App() {
   return (
     <UserProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Root />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/movie/:id" element={<MovieDescription2 />} />
-          <Route path="/theater/:id" element={<TheaterDescription />} />
-          <Route path="/selectSeats/:param" element={<SelectSeats />} />
-          <Route path="/tickets" element={<Tickets />} />
-          <Route path="/success" element={<OrderSuccess />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/auth"
+            element={
+              <PublicRoute>
+                <Auth />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/movie/:id"
+            element={
+              <ProtectedRoute>
+                <MovieDescription2 />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/theater/:id"
+            element={
+              <ProtectedRoute>
+                <TheaterDescription />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/selectSeats/:param"
+            element={
+              <ProtectedRoute>
+                <SelectSeats />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tickets"
+            element={
+              <ProtectedRoute>
+                <Tickets />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/success"
+            element={
+              <ProtectedRoute>
+                <OrderSuccess />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/cancel" element={<Cancel />} />
         </Routes>
       </Router>
@@ -66,14 +124,10 @@ function Cancel() {
   );
 }
 
-function Root() {
-  //check if token exist, the user is authenticated
-  const isAuthenticated = !!localStorage.getItem("token");
+// function Root() {
+//   //check if token exist, the user is authenticated
+//   // const isAuthenticated = !!localStorage.getItem("token");
 
-  return isAuthenticated ? (
-    <Navigate to="/dashboard" />
-  ) : (
-    <Navigate to="/auth" />
-  );
-}
+//   return <p>root</p>
+// }
 export default App;

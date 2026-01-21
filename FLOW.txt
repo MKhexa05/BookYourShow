@@ -46,8 +46,30 @@ token handling
 token expire handling
 
 
+AUTH 'STATE' LIVES IN UserContext
+Axios handles token failure globally
+2️⃣ What Is ACTUALLY Missing (Important)
+❌ Nothing stops the page from rendering first
 
+Right now:
 
+MovieDescription2 renders fully
+
+UI is shown
+
+Effects run
+
+Then API fails
+
+THEN redirect happens
+
+This causes:
+
+❌ Protected UI flash
+❌ Side effects running for unauthenticated users
+❌ Business logic executing before auth check
+
+This is not safe.
 
 
 

@@ -20,5 +20,16 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
+);
+
+axiosInstance.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/auth";
+    }
+    return Promise.reject(error);
+  },
 );

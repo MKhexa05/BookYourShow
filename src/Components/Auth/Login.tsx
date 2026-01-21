@@ -19,6 +19,7 @@ const Login = (props: LoginProps) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setAuthenticated } = useUserAuth();
 
   async function handleLogin() {
     if (!validateEmail(email)) {
@@ -41,8 +42,8 @@ const Login = (props: LoginProps) => {
       const { accessToken } = response.data.data;
       if (accessToken) {
         localStorage.setItem("token", accessToken);
+        setAuthenticated();
         toast.success("Login Successful");
-        // console.log(accessToken);
         navigate("/dashboard");
       }
     } catch (error: any) {

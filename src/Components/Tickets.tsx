@@ -33,21 +33,55 @@ type Order = {
     };
   };
 };
+const TicketCardSkeleton = () => {
+  return (
+    <div className="w-full flex-wrap flex  gap-6">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div className="w-full h-80 max-w-sm rounded-xl border border-gray-200 p-5 animate-pulse ">
+          {/* Movie title */}
+          <div className="h-5 w-3/4 bg-gray-300 rounded mb-7 mt-2" />
+
+          {/* Theater name */}
+          <div className="h-4 w-1/2 bg-gray-200 rounded mb-13" />
+
+          {/* Date & time */}
+          <div className="flex gap-4 mb-13">
+            <div className="h-4 w-24 bg-gray-200 rounded" />
+            <div className="h-4 w-20 bg-gray-200 rounded" />
+          </div>
+
+          {/* Seats */}
+          <div className="h-4 w-full bg-gray-200 rounded mb-4" />
+
+          {/* Divider */}
+          <div className="h-px bg-gray-200 my-4" />
+
+          {/* Price + status */}
+
+          <div className="h-10 w-full bg-gray-300 rounded-full" />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const Tickets = () => {
   const [selected, setSelected] = useState<"upcoming" | "history">("upcoming");
   const [allOrders, setAllOrders] = useState<Order[] | null>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchOrders() {
+      setLoading(true);
       try {
         const response = await axiosInstance.get(API_PATH.ORDER.GET_ORDERS);
         if (response.data) {
-          console.log(response.data);
           setAllOrders(response.data);
         }
       } catch (error) {
         console.log("Something went wrong", error);
+      } finally {
+        setLoading(false);
       }
     }
     fetchOrders();
@@ -70,8 +104,9 @@ const Tickets = () => {
   }, [selected, allOrders]);
 
   return (
-    <div className=" min-h-screen relative md:flex flex-col  px-6 md:px-10 lg:px-14  py-5">
+    <div className=" min-h-screen md:flex flex-col  px-6 md:px-10 lg:px-14  py-5">
       <Navbar />
+
       <div className="mt-6 flex flex-col w-full max-w-5xl md:px-8 md:pt-8">
         <div className=" gap-4  ">
           <button
@@ -102,22 +137,22 @@ const Tickets = () => {
 
       {/* Tickets */}
       <div className="mt-10 w-full  mx-auto md:px-8">
-        {ticketsToShow && ticketsToShow.length > 0 ? (
-          <div className="flex  gap-6">
+        {ticketsToShow && ticketsToShow.length > 0 && !loading ? (
+          <div className="flex flex-wrap  gap-6">
             {ticketsToShow.map((ticket) => (
-              <>
-                <TicketCard key={ticket.id} order={ticket} />
-              </>
+              <TicketCard key={ticket.id} order={ticket} />
             ))}
           </div>
-        ) : ticketsToShow?.length === 0 ? (
+        ) : ticketsToShow?.length === 0 && !loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-center text-gray-500">
             <p className="text-lg font-medium">No tickets found</p>
             <p className="text-sm mt-1">
               Your purchased tickets will appear here
             </p>
           </div>
-        ) : null}
+        ) : (
+          <TicketCardSkeleton />
+        )}
       </div>
     </div>
   );

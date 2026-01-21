@@ -5,7 +5,6 @@ import { API_PATH } from "../../utils/apiPaths";
 import Navbar from "../Navbar";
 import formatShowDate from "../../utils/fomatShowDates";
 import SeatNumberModal from "../SeatNumberModal";
-import useUserAuth from "../../hooks/useUserAuth";
 
 type MovieDescription = {
   id: string;
@@ -38,7 +37,6 @@ type TheaterShow = {
 };
 
 const MovieDescription2 = () => {
-  useUserAuth();
   const { id } = useParams();
 
   const [movieDescription, setMovieDescription] =
@@ -49,7 +47,7 @@ const MovieDescription2 = () => {
   >(null);
 
   const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split("T")[0]
+    new Date().toISOString().split("T")[0],
   );
   const [selectedTheater, setSelectedTheater] = useState<{
     id: string;
@@ -78,7 +76,7 @@ const MovieDescription2 = () => {
             params: {
               date: selectedDate,
             },
-          }
+          },
         );
         if (response.data) {
           return response.data;
@@ -97,7 +95,7 @@ const MovieDescription2 = () => {
       if (!data) return;
       setMovieDescription(data.movie);
       const filteredShowTimes = data.theaters.filter(
-        (theater: TheaterShow) => theater.showtimes.length > 0
+        (theater: TheaterShow) => theater.showtimes.length > 0,
       );
       if (filteredShowTimes && filteredShowTimes.length > 0) {
         setAllTheatersShows(filteredShowTimes);
@@ -341,8 +339,8 @@ const MovieDescription2 = () => {
                 {selectedTheater
                   ? selectedTheater.name
                   : loading
-                  ? "Select a Theater"
-                  : " "}
+                    ? "Select a Theater"
+                    : " "}
               </h3>
 
               {selectedDate ? (
@@ -361,7 +359,7 @@ const MovieDescription2 = () => {
                       hour: "numeric",
                       minute: "2-digit",
                       hour12: true,
-                    }
+                    },
                   )}
                 </p>
               ) : (

@@ -1,4 +1,7 @@
 export const API_PATH = {
+  APP: {
+    GET: "/",
+  },
   AUTH: {
     REGISTER: "/auth/signup",
     LOGIN: "auth/login",
